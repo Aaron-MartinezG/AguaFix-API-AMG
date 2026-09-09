@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: leaks-api-db
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=secret123
+      - POSTGRES_DB=leaksdb
+    volumes:
+      - leaks_db_data:/var/lib/postgresql/data
+
+volumes:
+  leaks_db_data:
