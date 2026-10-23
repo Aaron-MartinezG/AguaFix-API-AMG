@@ -18,7 +18,8 @@ const row = (label: string, value: string) => `
     <td align="right" style="padding:12px 0;border-bottom:1px solid #dce7ea;font-family:Helvetica,Arial,sans-serif;font-size:15px;color:#17242b;font-weight:bold;">${value}</td>
   </tr>`;
 
-export const generateReportTemplate = (dto: CreateReportDto): string => {
+// NUEVO: segundo parámetro photoUrl
+export const generateReportTemplate = (dto: CreateReportDto, photoUrl: string): string => {
   const { address, description, severity, reporterPhone } = dto;
   const color = SEVERITY_COLOR[severity] ?? '#1e6e8c';
   const label = SEVERITY_LABEL[severity] ?? severity;
@@ -42,7 +43,15 @@ export const generateReportTemplate = (dto: CreateReportDto): string => {
               </td>
             </tr>
             <tr>
-              <td style="padding:28px 32px;">
+              <td style="padding:24px 32px 0 32px;">
+                <p style="margin:0 0 10px 0;font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#5a6f75;text-transform:uppercase;letter-spacing:.5px;">Foto de la fuga</p>
+                <a href="${photoUrl}" target="_blank" style="text-decoration:none;">
+                  <img src="${photoUrl}" alt="Foto de la fuga en ${address}" width="496" style="display:block;width:100%;max-width:496px;height:auto;border:0;border-radius:10px;" />
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:20px 32px 28px 32px;">
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
 ${row('Dirección', address)}
 ${row('Descripción', description)}
