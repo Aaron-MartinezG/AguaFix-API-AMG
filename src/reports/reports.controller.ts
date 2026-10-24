@@ -50,7 +50,7 @@ export class ReportsController {
       const html = generateReportTemplate(dto, photoUrl);
       await this.emailService.sendEmail(
         envs.MAINTENANCE_EMAIL,
-        'Nueva fuga de agua reportada',
+        'AguaFix: Nueva fuga de agua reportada',
         html,
       );
     } catch (error) {
